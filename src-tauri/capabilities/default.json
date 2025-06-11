@@ -2,9 +2,30 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["main"],
+  "windows": [
+    "main"
+  ],
   "permissions": [
     "core:default",
-    "opener:default"
+    "opener:default",
+    "fs:default",
+    {
+      "identifier": "fs:scope",
+      "description": "File system access for the main window",
+      "allow": [{
+        "path": "$HOME/Music/*",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },
+      {
+        "path": "$DOCUMENT/**",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      }]
+    }
   ]
 }
